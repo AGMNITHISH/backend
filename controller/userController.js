@@ -19,7 +19,7 @@ const registerUser = asyncHandler(async (req, res) => {
       throw new Error("user registration got failed!!!");
     }
     res.status(200).json({
-      msg: createNewUser,
+      data: createNewUser,
     });
   } catch (error) {
     throw new Error(error);
@@ -42,11 +42,21 @@ const loginUser = asyncHandler(async (req, res) => {
       throw new Error("invalid credentials");
     }
     res.status(200).json({
-      msg: vaildUser,
+      data: vaildUser,
     });
   } catch (error) {
     throw new Error(error);
   }
 });
 
-module.exports = { registerUser, loginUser };
+const getMe = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await userModel.findById(id);
+    res.status(200).json({ data: result });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = { registerUser, loginUser, getMe };

@@ -9,6 +9,14 @@ const issueSchema = mongoose.Schema(
       type: String,
       required: [true, "issue content is required"],
     },
+    label: {
+      type: String,
+      default: "Bug",
+    },
+    priority: {
+      type: String,
+      default: "High",
+    },
     userId: {
       //   type: mongoose.Schema.Types.ObjectId,
       //   ref: "User",

@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema(
       required: [true, "email is required"],
       unique: true,
     },
+    role: {
+      type: String,
+      default: "Js Full stack",
+    },
     password: {
       type: String,
       required: [true, "password is required"],
